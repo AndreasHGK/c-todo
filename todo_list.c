@@ -5,6 +5,10 @@
 #include <string.h>
 
 bool read_list(struct TodoList *list, const char *file) {
+    list->count = 0;
+    free(list->entries);
+    list->entries = NULL;
+
     FILE *fp;
     fp = fopen(file, "r");
     if (fp == NULL) return false;
@@ -13,10 +17,6 @@ bool read_list(struct TodoList *list, const char *file) {
     if (fgetc(fp) != 1) {
         return false;
     }
-
-    list->count = 0;
-    free(list->entries);
-    list->entries = NULL;
 
     struct TodoEntry *entry;
     while (true) {

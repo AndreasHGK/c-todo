@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "subcommands/add.h"
 #include "subcommands/list.h"
 #include "cmd.h"
 #include "todo_list.h"
@@ -47,6 +48,11 @@ void test() {
 
 int main(int argc, char *argv[]) {
     struct Subcommand subcommands[] = {
+            {
+                    .name = "add",
+                    .description = "ads a new task to the todo list",
+                    .handler = subcommand_add,
+            },
             {
                     .name = "list",
                     .description = "lists the current todo tasks",
