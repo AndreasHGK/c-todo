@@ -35,10 +35,10 @@ void test() {
             .completed = false,
     });
 
-    write_list(&list, "./test.tl");
+    write_list(&list, "./todo.tl");
 
     struct TodoList list2 = {};
-    read_list(&list2, "./test.tl");
+    read_list(&list2, "./todo.tl");
     printf("%i entries\n", list2.count);
     for (int i = 0; i < list2.count; i++) {
         printf("Entry: %i - %s\n", list2.entries[i].completed, list2.entries[i].desc);
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
          i < &subcommands[sizeof(subcommands) / sizeof(struct Subcommand)]; i++) {
         if (strcmp(i->name, subcommand) != 0) continue;
 
-        i->handler(NULL);
+        i->handler(&commandOpts);
         return 0;
     }
 
