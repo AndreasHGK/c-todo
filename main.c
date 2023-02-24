@@ -6,6 +6,8 @@
 #include "subcommands/toggle.h"
 #include "cmd.h"
 
+/// A subcommand that is executed as `program <subcommand>`. It can have a name and a description, and when it is
+/// executed the provided handler is called.
 struct Subcommand {
     const char *name;
     const char *description;
@@ -17,7 +19,7 @@ int main(int argc, char *argv[]) {
     struct Subcommand subcommands[] = {
             {
                     .name = "add",
-                    .description = "ads a new task to the todo list",
+                    .description = "adds a new task to the todo list",
                     .handler = subcommand_add,
             },
             {
