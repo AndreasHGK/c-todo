@@ -4,7 +4,6 @@
 #include "subcommands/add.h"
 #include "subcommands/list.h"
 #include "cmd.h"
-#include "todo_list.h"
 
 struct Subcommand {
     const char *name;
@@ -12,39 +11,6 @@ struct Subcommand {
 
     int (*handler)(const struct CommandOpts *);
 };
-
-// todo: remove
-void test() {
-    struct TodoList list = {
-            .count = 0,
-            .entries = NULL,
-    };
-    list_append(&list, (struct TodoEntry) {
-            .desc = "This is an entry",
-            .completed = false,
-    });
-    list_append(&list, (struct TodoEntry) {
-            .desc = "aThis is another entry",
-            .completed = true,
-    });
-    list_append(&list, (struct TodoEntry) {
-            .desc = "This is a third",
-            .completed = false,
-    });
-    list_append(&list, (struct TodoEntry) {
-            .desc = "BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
-            .completed = false,
-    });
-
-    write_list(&list, "./todo.tl");
-
-    struct TodoList list2 = {};
-    read_list(&list2, "./todo.tl");
-    printf("%i entries\n", list2.count);
-    for (int i = 0; i < list2.count; i++) {
-        printf("Entry: %i - %s\n", list2.entries[i].completed, list2.entries[i].desc);
-    }
-}
 
 int main(int argc, char *argv[]) {
     struct Subcommand subcommands[] = {
