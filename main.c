@@ -3,6 +3,7 @@
 
 #include "subcommands/add.h"
 #include "subcommands/list.h"
+#include "subcommands/toggle.h"
 #include "cmd.h"
 
 struct Subcommand {
@@ -23,6 +24,11 @@ int main(int argc, char *argv[]) {
                     .name = "list",
                     .description = "lists the current todo tasks",
                     .handler = subcommand_list,
+            },
+            {
+                    .name = "toggle",
+                    .description = "toggle task as completed/incomplete",
+                    .handler = subcommand_toggle,
             },
     };
 

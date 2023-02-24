@@ -3,4 +3,4 @@ project(c-todo C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(c-todo main.c cmd.h cmd.c subcommands/list.c subcommands/list.h todo_list.h todo_list.c subcommands/add.c subcommands/add.h)
+add_executable(c-todo main.c cmd.h cmd.c subcommands/list.c subcommands/list.h todo_list.h todo_list.c subcommands/add.c subcommands/add.h subcommands/toggle.c subcommands/toggle.h)
